@@ -8,7 +8,7 @@ class BlogModel extends Blog {
     required super.content,
     required super.imageUrl,
     required super.topics,
-    required super.upatedAt,
+    required super.updatedAt,
   });
 
   Map<String, dynamic> toJson() {
@@ -19,7 +19,7 @@ class BlogModel extends Blog {
       'content': content,
       'image_url': imageUrl,
       'topics': topics,
-      'upated_at': upatedAt.toIso8601String(),
+      'updated_at': updatedAt.toIso8601String(),
     };
   }
 
@@ -31,9 +31,9 @@ class BlogModel extends Blog {
       content: map['content'] as String,
       imageUrl: map['image_url'] as String,
       topics: List<String>.from(map['topics'] ?? []),
-      upatedAt: map['upated_at'] == null
+      updatedAt: map['updated_at'] == null
           ? DateTime.now()
-          : DateTime.parse(map['upated_at']),
+          : DateTime.parse(map['updated_at']),
     );
   }
 
@@ -44,7 +44,7 @@ class BlogModel extends Blog {
     String? content,
     String? imageUrl,
     List<String>? topics,
-    DateTime? upatedAt,
+    DateTime? updatedAt,
   }) {
     return BlogModel(
       id: id ?? this.id,
@@ -53,7 +53,7 @@ class BlogModel extends Blog {
       content: content ?? this.content,
       imageUrl: imageUrl ?? this.imageUrl,
       topics: topics ?? this.topics,
-      upatedAt: upatedAt ?? this.upatedAt,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 }

@@ -29,7 +29,7 @@ class BlogRepositoryImpl implements BlogRepository {
         content: content,
         imageUrl: "",
         topics: topics,
-        upatedAt: DateTime.now(),
+        updatedAt: DateTime.now(),
       );
 
       final imageUrl = await blogRemoteDataSource.uploadBlogImage(
