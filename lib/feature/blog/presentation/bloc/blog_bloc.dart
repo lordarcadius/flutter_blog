@@ -23,7 +23,7 @@ class BlogBloc extends Bloc<BlogEvent, BlogState> {
 
     result.fold(
       (l) => emit(BlogFailure(error: l.message)),
-      (r) => BlogSuccess(),
+      (r) => emit(BlogSuccess()),
     );
   }
 }

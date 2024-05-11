@@ -42,7 +42,7 @@ class BlogRepositoryImpl implements BlogRepository {
       final uploadedBlog = await blogRemoteDataSource.uploadBlog(blogModel);
       return right(uploadedBlog);
     } on ServerException catch (e) {
-      return left(Failure(e.toString()));
+      return left(Failure(e.message));
     }
   }
 }
