@@ -18,3 +18,5 @@ final class BlogPublish extends BlogEvent {
     required this.topics,
   });
 }
+
+final class BlogFetchAllBlogs extends BlogEvent {}
