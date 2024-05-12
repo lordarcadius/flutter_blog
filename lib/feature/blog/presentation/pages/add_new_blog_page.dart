@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:blog_app/core/common/widgets/loader.dart';
 import 'package:blog_app/core/cubits/app_user/app_user_cubit.dart';
 import 'package:blog_app/core/theme/app_pallete.dart';
+import 'package:blog_app/core/utils/constants.dart';
 import 'package:blog_app/core/utils/pick_image.dart';
 import 'package:blog_app/core/utils/show_snackbar.dart';
 import 'package:blog_app/feature/blog/presentation/bloc/blog_bloc.dart';
@@ -23,7 +24,6 @@ class AddNewBlogPage extends StatefulWidget {
 }
 
 class _AddNewBlogPageState extends State<AddNewBlogPage> {
-  late List<String> categories;
   List<String> selectedCategories = [];
   final titleController = TextEditingController();
   final contentController = TextEditingController();
@@ -32,7 +32,6 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
 
   @override
   void initState() {
-    categories = ["Business", "Technology", "Programming", "Entertainment"];
     super.initState();
   }
 
@@ -145,13 +144,14 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                       height: 60,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: categories.length,
+                        itemCount: Constants.categories.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(5),
                             child: GestureDetector(
                               onTap: () {
-                                final String categoryName = categories[index];
+                                final String categoryName =
+                                    Constants.categories[index];
                                 setState(() {
                                   if (selectedCategories
                                       .contains(categoryName)) {
@@ -163,14 +163,14 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                               },
                               child: Chip(
                                 color: selectedCategories
-                                        .contains(categories[index])
+                                        .contains(Constants.categories[index])
                                     ? const MaterialStatePropertyAll(
                                         AppPallete.gradient1)
                                     : null,
                                 side: const BorderSide(
                                     color: AppPallete.borderColor),
                                 label: Text(
-                                  categories[index],
+                                  Constants.categories[index],
                                 ),
                               ),
                             ),
