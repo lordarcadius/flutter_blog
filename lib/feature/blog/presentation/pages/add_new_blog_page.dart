@@ -9,9 +9,11 @@ import 'package:blog_app/core/utils/show_snackbar.dart';
 import 'package:blog_app/feature/blog/presentation/bloc/blog_bloc.dart';
 import 'package:blog_app/feature/blog/presentation/pages/blog_page.dart';
 import 'package:blog_app/feature/blog/presentation/widgets/blog_editor.dart';
+import 'package:blog_app/feature/blog/presentation/widgets/text_editor.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 
 class AddNewBlogPage extends StatefulWidget {
   static route() => MaterialPageRoute(
@@ -27,6 +29,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
   List<String> selectedCategories = [];
   final titleController = TextEditingController();
   final contentController = TextEditingController();
+  final QuillController _controller = QuillController.basic();
   final formKey = GlobalKey<FormState>();
   File? image;
 
@@ -106,7 +109,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                               borderRadius: BorderRadius.circular(10),
                               child: Image.file(
                                 image!,
-                                height: 150,
+                                height: 250,
                                 width: double.infinity,
                                 fit: BoxFit.cover,
                               ),
@@ -182,9 +185,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                     BlogEditor(
                         controller: titleController, hintText: "Blog Title"),
                     const SizedBox(height: 20),
-                    BlogEditor(
-                        controller: contentController,
-                        hintText: "Blog Content"),
+                    TextEditor(controller: _controller),
                   ],
                 ),
               ),
